@@ -1,0 +1,8 @@
+1. We first import the data and set up lists for the different tasks
+2. For subtask 1&2 we decided to use the XGBoost library since their model is able to handle nan values without imputation
+3. We use feature engineering to create entirely new features out of the given ones since there were a lot of missing values. The features we implemented are: mean, variance, min observation, max observation, first and last observation and the number of missing values. The idea behind this was that we interpret the given measurements for the vitals as a time series and we only are interested in these things to make our prediction. For the tests we also have the number of missing tests feature since we believe that having no featured ordered in the first 12 hours greatly correlates with no tests being ordered in the future as well.
+4. We then train an xgboost logistic regression model for each of the tests + sepsis
+5. For task 3 we use a similar approach, but instead of using all features for feature engineering we chose the ones which are most correlated with the output variables
+6. We then train a RandomForest regressor for these features. Note that we used the standard scaler in our pipeline as well as gridsearch to find the optimal number of estimators
+	NOTE: This gridsearch runs around 90 minutes on Google Colab
+7. We combine all our predictions into a DataFrame and export it in the correct format
