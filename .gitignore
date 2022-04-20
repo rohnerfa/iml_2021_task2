@@ -1,4 +1,7 @@
 *.zip
 *.csv
+*.ipynb
 score_submission.py
 main-Copy1.ipynb
+submissions/
+.ipynb_checkpoints/
